@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                withAws(credentials: 'aws_minseo') {
+                withAWS(credentials: 'aws_minseo') {
                     sh 'aws s3 cp build/libs/apirdsdemo-0.0.1-SNAPSHOT.jar s3://minseo-build-files/'
                 }
             }
