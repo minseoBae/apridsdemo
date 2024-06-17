@@ -1,15 +1,17 @@
 pipeline {
-agent any
-stages {
-stage('Checkout') {
-steps {
-git branch: 'main', url: 'https://github.com/minseoBae/apridsdemo.git', credentialsId: 'minseo'
-}
-}
-stage('Build') {
-steps {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/minseoBae/apridsdemo.git', credentialsId: 'minseo'
+               }
+        }
+        stage('Build') {
+            steps {
 echo 'Building...'
-// build steps
+sh 'chmod 755 ./gradlew'
+sh './gradlew build'
 }
 }
 stage('Test') {
